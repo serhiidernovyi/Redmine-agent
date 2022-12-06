@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    image: app
+    container_name: "redmine-app"
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ../:/var/www
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      PHP_IDE_CONFIG: serverName=server
+  nginx:
+    image: nginx:latest
+    container_name: "redmine-nginx"
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ../:/var/www
+      - ./conf:/etc/nginx/conf.d
+    links:
+      - app
+  redmine:
+      image: redmine
+      container_name: 'redmine'
+      restart: always
+      ports:
+          - 8080:3000
+      environment:
+          REDMINE_DB_MYSQL: db
+          REDMINE_DB_PASSWORD: password
+          REDMINE_SECRET_KEY_BASE: supersecretkey
+  db:
+      image: mysql:latest
+      container_name: 'db'
+      restart: always
+      environment:
+          - MYSQL_ROOT_PASSWORD=password
+          - MYSQL_DATABASE=redmine
+          - MYSQL_USER=redmine
+          - MYSQL_PASSWORD=password
+      ports:
+          - 3306:3306
