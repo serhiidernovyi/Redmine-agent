@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Http\Contracts\IError;
+use App\Http\Contracts\ISuccess;
 use App\Http\Contracts\ITicketRequest;
 use App\Models\RequestData\TicketData;
 use App\Models\ResponseFactory\IntegrationResponseFactory;
@@ -26,7 +28,7 @@ class TicketService
         $this->response_factory = $response_factory;
     }
 
-    public function saveIssue(ITicketRequest $request)
+    public function prepareTicket(ITicketRequest $request): ISuccess|IError
     {
         $curl_url = $this->data->getPostUrl();
 

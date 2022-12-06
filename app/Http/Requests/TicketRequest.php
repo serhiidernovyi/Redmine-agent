@@ -26,11 +26,41 @@ class TicketRequest extends FormRequest implements ITicketRequest
     {
         return [
             'project_id'=> 'required|int',
-            'tracker_id'=> 'required|int',
-            'status_id' => 'required|int',
             'priority_id'=> 'required|int',
+            'tracker_id'=> 'int',
+            'status_id' => 'int',
             'subject'=> 'required|string|max:255|min:2',
-            'description'=> 'required|string|max:1000|min:2'
+            'description'=> 'string|max:1000|min:2'
         ];
+    }
+
+    public function getProjectId(): int
+    {
+        return $this->input('project_id');
+    }
+
+    public function getTrackerId(): int|null
+    {
+        return $this->input('tracker_id');
+    }
+
+    public function getStatusId(): int|null
+    {
+        return $this->input('status_id');
+    }
+
+    public function getPriorityId(): int
+    {
+        return $this->input('priority_id');
+    }
+
+    public function getSubject(): string
+    {
+        return $this->input('subject');
+    }
+
+    public function getDescription(): string
+    {
+        return $this->input('description', '');
     }
 }

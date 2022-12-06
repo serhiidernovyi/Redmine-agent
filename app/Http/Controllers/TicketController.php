@@ -10,7 +10,7 @@ class TicketController extends Controller
 {
     public function create(TicketRequest $request, TicketService $service)
     {
-        $response = $service->saveIssue($request);
+        $response = $service->prepareTicket($request);
         if ($response) {
             return response(['message' => $response->getMessage()], Response::HTTP_CREATED);
         }
