@@ -49,7 +49,6 @@ class TicketService
     {
         return $this->client::withHeaders([
             'X-Redmine-API-Key' => $this->data->getKey(),
-            'Content-Type' => 'application/json',
         ])->post($url, $post_fields);
     }
 }

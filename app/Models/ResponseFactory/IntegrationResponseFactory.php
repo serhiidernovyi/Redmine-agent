@@ -49,16 +49,4 @@ class IntegrationResponseFactory
 
         return $result;
     }
-
-    public function createErrorMessage($message, $exception): IError
-    {
-        $this->log::error($message);
-        $this->log::error($exception->__toString());
-
-        $result = $this->app->make(Error::class);
-
-        $result->message = $message;
-
-        return $result;
-    }
 }
