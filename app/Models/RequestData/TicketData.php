@@ -9,13 +9,12 @@ class TicketData
     public static function getTicket(ITicketRequest $request): array
     {
         return [
-            'project_id'=> 4,
-            'tracker_id'=> 6,
-            'status_id'=> 5,
-            'priority_id'=> 2,
-            'category_id'=> 6,
-            'subject'=> "Example",
-            'description'=> "Example description"
+            'project_id'=> $request->getProjectId(),
+            'tracker_id'=> $request->getTrackerId(),
+            'status_id'=> $request->getStatusId(),
+            'priority_id'=> $request->getPriorityId(),
+            'subject'=> $request->getSubject(),
+            'description'=> $request->getDescription()
         ];
     }
 }

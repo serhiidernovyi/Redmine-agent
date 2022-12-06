@@ -14,4 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/tickets', [TicketController::class, 'create'])->name('ticket.create');
-
