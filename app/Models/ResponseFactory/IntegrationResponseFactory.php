@@ -29,7 +29,7 @@ class IntegrationResponseFactory
     }
 
 
-    private function createErrorObj(Response $response): Error
+    private function createErrorObj(Response $response): IError
     {
         $this->log::error($response->status());
         $this->log::error($response->reason());

@@ -33,8 +33,8 @@ class TicketService
         $curl_url = $this->data->getPostUrl();
 
         $post_fields = TicketData::getTicket($request);
-
-        $response = $this->curlSendData($curl_url, $post_fields);
+        $response
+         = $this->curlSendData($curl_url, $post_fields);
 
         return $this->response_factory->processingResponse($response);
     }

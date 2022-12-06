@@ -12,6 +12,8 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       PHP_IDE_CONFIG: serverName=server
+    networks:
+        - app-network
   nginx:
     image: nginx:latest
     container_name: "redmine-nginx"
@@ -23,6 +25,8 @@ services:
       - ./conf:/etc/nginx/conf.d
     links:
       - app
+    networks:
+        - app-network
   redmine:
       image: redmine
       container_name: 'redmine'
@@ -33,6 +37,8 @@ services:
           REDMINE_DB_MYSQL: db
           REDMINE_DB_PASSWORD: password
           REDMINE_SECRET_KEY_BASE: supersecretkey
+      networks:
+          - app-network
   db:
       image: mysql:latest
       container_name: 'db'
@@ -44,3 +50,8 @@ services:
           - MYSQL_PASSWORD=password
       ports:
           - 3306:3306
+      networks:
+          - app-network
+networks:
+    app-network:
+        driver: bridge
