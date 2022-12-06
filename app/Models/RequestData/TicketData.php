@@ -4,9 +4,9 @@ namespace App\Models\RequestData;
 
 use App\Http\Contracts\ITicketRequest;
 
-class IssueData
+class TicketData
 {
-    public static function getIssue(ITicketRequest $request): array
+    public static function getTicket(ITicketRequest $request): array
     {
         return [
             'project_id'=> 4,

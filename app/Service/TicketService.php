@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use App\Http\Contracts\ITicketRequest;
-use App\Models\RequestData\IssueData;
+use App\Models\RequestData\TicketData;
 use App\Models\ResponseFactory\IntegrationResponseFactory;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -30,7 +30,7 @@ class TicketService
     {
         $curl_url = $this->data->getPostUrl();
 
-        $post_fields = IssueData::getIssue($request);
+        $post_fields = TicketData::getTicket($request);
 
         $response = $this->curlSendData($curl_url, $post_fields);
 
