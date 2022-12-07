@@ -21,13 +21,15 @@ class IntegrationResponseFactory
 
     public function processingResponse(Response $response): ISuccess|IError
     {
-        if (! $response->successful()) {
-            return $this->createErrorObj($response);
+        switch ($response->status()) {
+            case "201":
+                return $this->createSuccessMessage(ResponseMessages::PUBLISHED);
+            case "200":
+                return $this->createSuccessObj($response);
+            default:
+                return $this->createErrorObj($response);
         }
-
-        return $this->createSuccessMessage(ResponseMessages::PUBLISHED);
     }
-
 
     private function createErrorObj(Response $response): IError
     {
@@ -38,6 +40,20 @@ class IntegrationResponseFactory
         $result->code = $response->status();
         $result->message = $response->reason();
 
+        return $result;
+    }
+
+    private function createSuccessObj(Response $response): ISuccess
+    {
+        $this->log::info($response->status());
+        $this->log::info($response->reason());
+
+        $result = $this->app->make(Success::class);
+        $result->code = $response->status();
+        $json = json_decode($response->body(), true);
+        $json =  $json['issues'];
+
+        $result->obj = $json;
         return $result;
     }
 

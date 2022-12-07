@@ -33,8 +33,17 @@ class TicketService
         $curl_url = $this->data->getPostUrl();
 
         $post_fields = TicketData::getTicket($request);
-        $response
-         = $this->curlSendData($curl_url, $post_fields);
+
+        $response = $this->curlSendData($curl_url, $post_fields);
+
+        return $this->response_factory->processingResponse($response);
+    }
+
+    public function show(): ISuccess|IError
+    {
+        $curl_url = $this->data->getPostUrl();
+
+        $response = $this->curlGetData($curl_url);
 
         return $this->response_factory->processingResponse($response);
     }
@@ -50,5 +59,12 @@ class TicketService
         return $this->client::withHeaders([
             'X-Redmine-API-Key' => $this->data->getKey(),
         ])->post($url, $post_fields);
+    }
+
+    private function curlGetData(mixed $url)
+    {
+        return $this->client::withHeaders([
+            'X-Redmine-API-Key' => $this->data->getKey(),
+        ])->get($url);
     }
 }

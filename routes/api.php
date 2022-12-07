@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/tickets', [TicketController::class, 'create'])->name('ticket.create');
+Route::post('/tickets', [TicketController::class, 'store'])->name('ticket.store');
+Route::get('/tickets', [TicketController::class, 'show'])->name('ticket.show');

@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\StoreTask;
 
+use Illuminate\Contracts\Config\Repository as ConfigContract;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
-use Illuminate\Contracts\Config\Repository as ConfigContract;
 
-class PostTaskTest extends TestCase
+class StoreTaskTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -34,7 +34,7 @@ class PostTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.create'), $credentials);
+        $response = $this->json('POST', route('ticket.store'), $credentials);
 
         // THEN
         $this->assertEquals(201, $response->getStatusCode());
@@ -57,7 +57,7 @@ class PostTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.create'), $credentials);
+        $response = $this->json('POST', route('ticket.store'), $credentials);
 
         // THEN
         $this->assertEquals(401, $response->getStatusCode());
@@ -78,7 +78,7 @@ class PostTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.create'), $credentials);
+        $response = $this->json('POST', route('ticket.store'), $credentials);
 
         // THEN
         $this->assertEquals(422, $response->getStatusCode());
@@ -99,7 +99,7 @@ class PostTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.create'), $credentials);
+        $response = $this->json('POST', route('ticket.store'), $credentials);
 
         // THEN
         $this->assertEquals(422, $response->getStatusCode());
@@ -120,7 +120,7 @@ class PostTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.create'), $credentials);
+        $response = $this->json('POST', route('ticket.store'), $credentials);
 
         // THEN
         $this->assertEquals(422, $response->getStatusCode());
