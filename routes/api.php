@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/tickets', [TicketController::class, 'store'])->name('ticket.store');
-Route::get('/tickets', [TicketController::class, 'show'])->name('ticket.show');
+Route::post('/tasks', [TaskController::class, 'store'])->name('task.store');
+Route::get('/tasks', [TaskController::class, 'show'])->name('task.show');

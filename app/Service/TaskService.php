@@ -10,7 +10,7 @@ use App\Models\ResponseFactory\IntegrationResponseFactory;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
-class TicketService
+class TaskService
 {
     private Http $client;
     private RedmineData $data;

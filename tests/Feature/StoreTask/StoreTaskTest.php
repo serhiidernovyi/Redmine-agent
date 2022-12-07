@@ -34,7 +34,7 @@ class StoreTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.store'), $credentials);
+        $response = $this->json('POST', route('task.store'), $credentials);
 
         // THEN
         $this->assertEquals(201, $response->getStatusCode());
@@ -57,7 +57,7 @@ class StoreTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.store'), $credentials);
+        $response = $this->json('POST', route('task.store'), $credentials);
 
         // THEN
         $this->assertEquals(401, $response->getStatusCode());
@@ -78,7 +78,7 @@ class StoreTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.store'), $credentials);
+        $response = $this->json('POST', route('task.store'), $credentials);
 
         // THEN
         $this->assertEquals(422, $response->getStatusCode());
@@ -99,7 +99,7 @@ class StoreTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.store'), $credentials);
+        $response = $this->json('POST', route('task.store'), $credentials);
 
         // THEN
         $this->assertEquals(422, $response->getStatusCode());
@@ -120,7 +120,7 @@ class StoreTaskTest extends TestCase
         ];
 
         // WHEN
-        $response = $this->json('POST', route('ticket.store'), $credentials);
+        $response = $this->json('POST', route('task.store'), $credentials);
 
         // THEN
         $this->assertEquals(422, $response->getStatusCode());

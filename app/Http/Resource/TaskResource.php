@@ -5,7 +5,7 @@ namespace App\Http\Resource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
 
-class TicketsResource extends ResourceCollection
+class TaskResource extends ResourceCollection
 {
     /**
      * CaseResource constructor.

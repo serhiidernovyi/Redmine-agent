@@ -29,7 +29,7 @@ class ShowTaskTest extends TestCase
         Http::fake([$this->url => Http::response($issues, 200)]);
 
         // WHEN
-        $response = $this->json('GET', route('ticket.show'));
+        $response = $this->json('GET', route('task.show'));
 
         // THEN
         $this->assertEquals(200, $response->getStatusCode());
@@ -45,7 +45,7 @@ class ShowTaskTest extends TestCase
         Http::fake([$this->url => Http::response($issues, 200)]);
 
         // WHEN
-        $response = $this->json('GET', route('ticket.show'));
+        $response = $this->json('GET', route('task.show'));
 
         // THEN
         $this->assertEquals(200, $response->getStatusCode());
