@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Responses;
+namespace App\Http\Controllers\OpenApi;
 
 /**
  * @OA\Response(
