@@ -14,7 +14,7 @@ class StoreTaskTest extends TestCase
         $this->conf = $this->app->make(ConfigContract::class);
         $this->conf->set('redmine.url', 'https://google.com');
         $this->conf->set('redmine.key', 'SomeKey');
-        $this->url =  config('redmine.url');
+        $this->url = config('redmine.url');
     }
 
     /**
@@ -25,12 +25,12 @@ class StoreTaskTest extends TestCase
         // GIVEN
         Http::fake([$this->url => Http::response('Created', 201)]);
         $credentials = [
-            'project_id'=> 1,
-            'tracker_id'=> 1,
+            'project_id' => 1,
+            'tracker_id' => 1,
             'status_id' => 1,
-            'priority_id'=> 1,
-            'subject'=> 'Some text',
-            'description'=> 'Some text'
+            'priority_id' => 1,
+            'subject' => 'Some text',
+            'description' => 'Some text'
         ];
 
         // WHEN
@@ -48,12 +48,12 @@ class StoreTaskTest extends TestCase
         // GIVEN
         Http::fake([$this->url => Http::response('Unauthorized', 401)]);
         $credentials = [
-            'project_id'=> 1,
-            'tracker_id'=> 1,
+            'project_id' => 1,
+            'tracker_id' => 1,
             'status_id' => 1,
-            'priority_id'=> 1,
-            'subject'=> 'Some text',
-            'description'=> 'Some text'
+            'priority_id' => 1,
+            'subject' => 'Some text',
+            'description' => 'Some text'
         ];
 
         // WHEN
@@ -70,11 +70,11 @@ class StoreTaskTest extends TestCase
     {
         // GIVEN
         $credentials = [
-            'tracker_id'=> 1,
+            'tracker_id' => 1,
             'status_id' => 1,
-            'priority_id'=> 1,
-            'subject'=> 'Some text',
-            'description'=> 'Some text'
+            'priority_id' => 1,
+            'subject' => 'Some text',
+            'description' => 'Some text'
         ];
 
         // WHEN
@@ -91,11 +91,11 @@ class StoreTaskTest extends TestCase
     {
         // GIVEN
         $credentials = [
-            'project_id'=> 1,
-            'tracker_id'=> 1,
+            'project_id' => 1,
+            'tracker_id' => 1,
             'status_id' => 1,
-            'subject'=> 'Some text',
-            'description'=> 'Some text'
+            'subject' => 'Some text',
+            'description' => 'Some text'
         ];
 
         // WHEN
@@ -112,11 +112,11 @@ class StoreTaskTest extends TestCase
     {
         // GIVEN
         $credentials = [
-            'project_id'=> 1,
-            'tracker_id'=> 1,
+            'project_id' => 1,
+            'tracker_id' => 1,
             'status_id' => 1,
-            'priority_id'=> 1,
-            'description'=> 'Some text'
+            'priority_id' => 1,
+            'description' => 'Some text'
         ];
 
         // WHEN

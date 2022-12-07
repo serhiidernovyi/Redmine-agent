@@ -51,7 +51,7 @@ class IntegrationResponseFactory
         $result = $this->app->make(Success::class);
         $result->code = $response->status();
         $json = json_decode($response->body(), true);
-        $json =  $json['issues'];
+        $json = $json['issues'];
 
         $result->obj = $json;
         return $result;

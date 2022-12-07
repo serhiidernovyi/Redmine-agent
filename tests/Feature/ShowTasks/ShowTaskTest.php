@@ -16,7 +16,7 @@ class ShowTaskTest extends TestCase
         $this->conf = $this->app->make(ConfigContract::class);
         $this->conf->set('redmine.url', 'https://google.com');
         $this->conf->set('redmine.key', 'SomeKey');
-        $this->url =  config('redmine.url');
+        $this->url = config('redmine.url');
     }
 
     /**
